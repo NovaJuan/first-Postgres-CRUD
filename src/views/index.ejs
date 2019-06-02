@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PostgreSQL ToDo</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">PostgreSQL CRUD</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/todo/add">Add ToDo</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <% if(data.length < 1){ %>
+                <h2>No Todos :D</h2>
+            <% }else{ %>
+                <% data.forEach(todo =>{ %>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3><%= todo.title %></h3>
+                                <p><%= todo.description %></p>
+                                <div class="btn-group">
+                                    <a href="/todo/update/<%= todo.id %>" class="btn btn-primary">Update</a>
+                                    <a href="/todo/delete/<%= todo.id %>" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
